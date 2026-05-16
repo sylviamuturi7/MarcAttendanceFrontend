@@ -1,5 +1,3 @@
-const API_BASE_URL = "http://localhost:5174/api";
-
 const ENDPOINTS = {
   AUTH: {
     LOGIN: "/auth/login",
@@ -32,4 +30,4 @@ const ENDPOINTS = {
   },
 };
 
-export { API_BASE_URL, ENDPOINTS };
+export { ENDPOINTS };
