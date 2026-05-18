@@ -7,10 +7,8 @@ function StudentForm({ onSubmit, initialData }) {
   });
 
   const handleChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
+    const {name, value} = e.target;
     
-
     setFormData((prev) => {
       return {
         ...prev,
