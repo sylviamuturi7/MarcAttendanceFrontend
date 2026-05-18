@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import { useState } from "react";
 
 function StudentForm({ onSubmit, initialData }) {
   const [formData, setFormData] = useState({
@@ -8,33 +8,25 @@ function StudentForm({ onSubmit, initialData }) {
   });
 
   const handleChange = (e) => {
-    const {name, value} = e.target;
-    
+    const { name, value } = e.target;
+
     setFormData((prev) => {
       return {
         ...prev,
-        [name]: value, 
+        [name]: value,
       };
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(formData); // Pass the data back to the parent component
+    onSubmit(formData);
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        name="name"
-        value={formData.name}
-        onChange={handleChange}
-      />
-      <input
-        name="email"
-        value={formData.email}
-        onChange={handleChange}
-      />
+      <input name="name" value={formData.name} onChange={handleChange} />
+      <input name="email" value={formData.email} onChange={handleChange} />
       <button type="submit">Save</button>
     </form>
   );

@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import StudentForm from "../components/StudentForm";
-import {
-  getStudentById,
-  updateStudent,
-} from "../studentService";
+import { getStudentById, updateStudent } from "../studentService";
 
 const EditStudentProfile = () => {
   const { id } = useParams();

@@ -1,9 +1,8 @@
-import React from "react";
 import Card from "../../../components/common/Card";
 
 const StudentCard = ({ student }) => {
   return (
-    <Card>
+    <Card title="Student">
       <h3>{student.name}</h3>
       <p>{student.regNo}</p>
       <p>{student.email}</p>
