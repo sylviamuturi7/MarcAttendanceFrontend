@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+
+/*
+ main.jsx had a duplicate BrowserRouter — 
+it was wrapping the app in BrowserRouter while AppRoutes.jsx already had its own BrowserRouter. 
+Having two nested routers causes routing issues. 
+*/
