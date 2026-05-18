@@ -1,8 +1,14 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary: #3D6B4F;
+  --color-accent: #B8956A;
+  --color-background: #F5F0E8;
+  --color-body: #1a1a1a;
 
-/*
- main.jsx had a duplicate BrowserRouter — 
-it was wrapping the app in BrowserRouter while AppRoutes.jsx already had its own BrowserRouter. 
-Having two nested routers causes routing issues. 
-*/
+  --font-family-serif: Georgia, serif;
+  --font-family-sans: Inter, sans-serif;
+
+  --radius-3xl: 1.5rem;
+  --radius-4xl: 2rem;
+}
