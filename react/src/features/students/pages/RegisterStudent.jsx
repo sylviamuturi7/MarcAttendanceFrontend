@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import StudentForm from "../components/StudentForm";
 import { createStudent } from "../studentService";
 
@@ -10,7 +10,7 @@ const RegisterStudent = () => {
       setLoading(true);
       await createStudent(data);
       alert("Student created successfully");
-    } catch (err) {
+    } catch {
       alert("Failed to create student");
     } finally {
       setLoading(false);

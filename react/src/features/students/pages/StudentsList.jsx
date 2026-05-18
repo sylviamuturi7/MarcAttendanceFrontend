@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import StudentTable from "../components/StudentTable";
 import StudentFilters from "../components/StudentFilters";
 import { getStudents, deleteStudent } from "../studentService";
@@ -10,13 +10,13 @@ const StudentsList = () => {
     department: "",
   });
 
-  const fetchData = async () => {
-    const data = await getStudents();
-    setStudents(data);
-  };
-
   useEffect(() => {
-    fetchData();
+    const loadStudents = async () => {
+      const data = await getStudents();
+      setStudents(data);
+    };
+
+    void loadStudents();
   }, []);
 
   const handleDelete = async (id) => {

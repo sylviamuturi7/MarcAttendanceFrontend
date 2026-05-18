@@ -1,5 +1,4 @@
 import React from "react";
-
 const StudentTable = ({ students, onEdit, onDelete }) => {
   return (
     <table className="table">
