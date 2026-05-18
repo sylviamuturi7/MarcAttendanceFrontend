@@ -1,15 +1,23 @@
-function DataTable({ columns, children }) {
+import React from "react";
+
+function DataTable({ columns, data }) {
   return (
-    <table className="table">
+    <table>
       <thead>
         <tr>
           {columns.map((col) => (
-            <th key={col}>{col}</th>
+            <th key={col.accessor}>{col.header}</th>
           ))}
         </tr>
       </thead>
       <tbody>
-        {children}
+        {data.map((row, rowIndex) => (
+          <tr key={rowIndex}>
+            {columns.map((col) => (
+              <td key={col.accessor}>{row[col.accessor]}</td>
+            ))}
+          </tr>
+        ))}
       </tbody>
     </table>
   );
