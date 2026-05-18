@@ -38,6 +38,9 @@ function Navbar() {
       <div className="navbar-actions">
         <button onClick={handleNotifications} aria-label="Notifications">
           <Bell size={20} aria-hidden="true" />
+          {notificationCount > 0 ? (
+            <span className="navbar-notification-badge">{notificationCount}</span>
+          ) : null}
         </button>
 
         <Link to="/profile">
