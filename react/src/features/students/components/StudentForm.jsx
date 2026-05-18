@@ -12,7 +12,7 @@ function StudentForm({ onSubmit, initialData }) {
     setFormData((prev) => {
       return {
         ...prev,
-        [name]: value,
+        [name]: value, 
       };
     });
   };

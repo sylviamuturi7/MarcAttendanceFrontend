@@ -23,6 +23,6 @@ function StudentDetailsCard({ student }) {
   } else {
     return null;
   }
-}
+} 
 
 export default StudentDetailsCard;
