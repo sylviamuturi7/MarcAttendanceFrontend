@@ -1,7 +1,7 @@
-function Button({ text, onClick, type, className, ariaLabel }) {
+function Button({ children, onClick, type, className, ariaLabel }) {
   return (
     <button type={type || "button"} onClick={onClick} className={className} aria-label={ariaLabel}>
-      {text}
+      {children}
     </button>
   );
 }
