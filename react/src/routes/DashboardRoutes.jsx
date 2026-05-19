@@ -1,25 +1,25 @@
 import { Routes, Route } from "react-router-dom";
 
 import ProtectedRoute from "./ProtectedRoute";
-import DashboardLayout from "@/components/layout/DashboardLayout";
+import DashboardLayout from "../components/Layout/DashboardLayout.jsx";
 
-import StudentsList from "@/features/students/pages/StudentsList";
-import StudentProfile from "@/features/students/pages/StudentProfile";
-import RegisterStudent from "@/features/students/pages/RegisterStudent";
+import StudentsList from "../features/students/pages/StudentsList.jsx";
+import StudentProfile from "../features/students/pages/StudentProfile.jsx";
+import RegisterStudent from "../features/students/pages/RegisterStudent.jsx";
 
-import AttendanceOverview from "@/features/attendance/pages/AttendanceOverview";
-import AttendanceLogs from "@/features/attendance/pages/AttendanceLogs";
+import AttendanceOverview from "../features/attendance/pages/AttendanceOverview.jsx";
+import AttendanceLogs from "../features/attendance/pages/AttendanceLogs.jsx";
 
-import Teachers from "@/features/teachers/pages/Teachers";
-import Departments from "@/features/departments/pages/Departments";
-import Devices from "@/features/devices/pages/Devices";
-import MARSReports from "@/features/reports/pages/MARSReports";
+import Teachers from "../features/teachers/pages/Teachers.jsx";
+import Departments from "../features/departments/pages/Departments.jsx";
+import Devices from "../features/devices/pages/Devices.jsx";
+import MARSReports from "../features/reports/pages/MARSReport.jsx";
 
 function DashboardRoutes() {
   return (
-    <ProtectedRoute>
-      <DashboardLayout>
-        <Routes>
+    <Routes>
+      <Route element={<ProtectedRoute />}>
+        <Route element={<DashboardLayout />}>
           {/* Students */}
           <Route path="/students" element={<StudentsList />} />
           <Route path="/students/:id" element={<StudentProfile />} />
@@ -40,9 +40,9 @@ function DashboardRoutes() {
 
           {/* Reports */}
           <Route path="/reports" element={<MARSReports />} />
-        </Routes>
-      </DashboardLayout>
-    </ProtectedRoute>
+        </Route>
+      </Route>
+    </Routes>
   );
 }
 
