@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #3D6B4F;
+  --color-accent: #B8956A;
+  --color-background: #F5F0E8;
+  --color-body: #1a1a1a;
+
+  --font-family-serif: Georgia, serif;
+  --font-family-sans: Inter, sans-serif;
+
+  --radius-3xl: 1.5rem;
+  --radius-4xl: 2rem;
+}
