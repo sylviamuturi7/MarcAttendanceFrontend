@@ -1,5 +1,5 @@
 // API calls for attendance data used across dashboard and logs pages
-import api from "../../../services/api";
+import api from "../../services/api";
 
 async function getLiveConnections() {
   try {

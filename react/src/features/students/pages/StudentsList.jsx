@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import StudentTable from "../components/StudentTable";
 import StudentFilters from "../components/StudentFilters";
 import { getStudents, deleteStudent } from "../studentService";
 
 const StudentsList = () => {
+  const navigate = useNavigate();
   const [students, setStudents] = useState([]);
   const [filters, setFilters] = useState({
     search: "",
@@ -25,7 +27,7 @@ const StudentsList = () => {
   };
 
   const handleEdit = (student) => {
-    console.log("Edit:", student);
+    navigate(`/students/${student.id}/edit`);
   };
 
   const filtered = students.filter((s) =>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import PageHeader from "../../../components/Layout/PageHeader";
+import PageHeader from "@/components/Layout/PageHeader";
 import AttendanceChart from "../../attendance/components/AttendanceChart";
 import { getAttendanceLogs } from "../../attendance/attendanceService";
 

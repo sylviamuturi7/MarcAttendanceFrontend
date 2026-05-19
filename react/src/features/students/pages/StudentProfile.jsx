@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import StudentDetailsCard from "../components/StudentDetailsCard";
 import { getStudentById } from "../studentService";
 
 const StudentProfile = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [student, setStudent] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -29,7 +30,7 @@ const StudentProfile = () => {
   return (
     <div>
       <h2>Student Profile</h2>
-
+      <button onClick={() => navigate(`/students/${id}/edit`)}>Edit</button>
       <StudentDetailsCard student={student} />
     </div>
   );

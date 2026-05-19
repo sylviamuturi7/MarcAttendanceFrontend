@@ -1,5 +1,5 @@
 // NOTE: "Layout" is capital L — previous file used lowercase which broke on Linux
-import PageHeader from "../../../components/Layout/PageHeader";
+import PageHeader from "@/components/Layout/PageHeader";
 import PersonalInfoForm from "../components/PersonalInfoForm";
 import ProfilePhotoUpload from "../components/ProfilePhotoUpload";
 import SecurityDetailsForm from "../components/SecurityDetailsForm";

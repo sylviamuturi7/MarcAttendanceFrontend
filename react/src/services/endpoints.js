@@ -46,20 +46,6 @@ const ENDPOINTS = {
     exportCsv: (id) => `/reports/${id}/export`,
     delete: (id) => `/reports/${id}`,
   },
-
-  devices: {
-    list: "/devices",
-    details: (mac) => `/devices/${mac}`,
-    create: "/devices",
-    updateStatus: (mac) => `/devices/${mac}`,
-    delete: (mac) => `/devices/${mac}`,
-  },
-
-  profile: {
-    get: "/profile",
-    update: "/profile",
-    updatePassword: "/profile/password",
-  },
 };
 
 export { ENDPOINTS };

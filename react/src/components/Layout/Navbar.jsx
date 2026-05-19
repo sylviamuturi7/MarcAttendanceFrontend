@@ -1,16 +1,13 @@
+import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
 import { Bell, LogOut } from "lucide-react";
-
 import useAuth from "@/hooks/useAuth";
 import { NotificationContext } from "@/context/NotificationContext";
 import { navigation } from "@/config/navigation";
 
 function Navbar() {
-
   const { user, logout } = useAuth();
-
-
+  const navigate = useNavigate();
   const { notifications } = useContext(NotificationContext);
   const notificationCount = notifications.length;
 
@@ -20,13 +17,17 @@ function Navbar() {
 
   function handleLogout() {
     logout();
+    navigate("/", { replace: true });
+  }
+
+  function handleNotifications() {
   }
 
   return (
     <nav className="navbar" aria-label="Main navigation">
       <div className="navbar-logo">
-        <img src="/logo.png" alt="" />
-        <span>MARC</span>
+        <img src="/logo.png" alt="MARS logo" />
+        <span>MARS</span>
       </div>
 
       <ul className="navbar-links">
@@ -38,21 +39,21 @@ function Navbar() {
       </ul>
 
       <div className="navbar-actions">
-        <button aria-label="Notifications">
+        <button type="button" onClick={handleNotifications} aria-label="Notifications">
           <Bell size={20} aria-hidden="true" />
           {notificationCount > 0 && (
             <span className="navbar-notification-badge">{notificationCount}</span>
           )}
         </button>
 
-        <Link to="/profile">
+        <Link to="/profile" aria-label="Profile">
           <img
             src={user?.avatar || "/images/admin-avatar.png"}
             alt={user ? `${user.name} profile photo` : "Profile photo"}
           />
         </Link>
 
-        <button onClick={handleLogout} aria-label="Log out">
+        <button type="button" onClick={handleLogout} aria-label="Log out">
           <LogOut size={20} aria-hidden="true" />
         </button>
       </div>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import PageHeader from "../../../components/Layout/PageHeader";
+import PageHeader from "@/components/Layout/PageHeader";
 import { getAverageAttendance } from "../../reports/reportService";
 
 // DashboardLayout is NOT here — DashboardRoutes already wraps all pages in it

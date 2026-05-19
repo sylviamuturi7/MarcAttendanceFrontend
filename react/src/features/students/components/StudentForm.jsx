@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Input from "../../../components/common/Input";
+import Input from "@/components/common/Input";
 
 function StudentForm({ onSubmit, initialData, loading }) {
   const [formData, setFormData] = useState({
@@ -8,15 +8,11 @@ function StudentForm({ onSubmit, initialData, loading }) {
     regNo: initialData?.regNo || "",
     department: initialData?.department || "",
     year: initialData?.year || "",
+    device: {
+      name: initialData?.device?.name || "",
+      macAddress: initialData?.device?.macAddress || "",
+    },
   });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -63,6 +59,28 @@ function StudentForm({ onSubmit, initialData, loading }) {
         placeholder="Year"
         value={formData.year}
         onChange={(e) => setFormData((prev) => ({ ...prev, year: e.target.value }))}
+      />
+
+      <h3>Device</h3>
+      <Input
+        label="Device Name"
+        type="text"
+        placeholder="Device name"
+        value={formData.device.name}
+        onChange={(e) => setFormData((prev) => ({
+          ...prev,
+          device: { ...prev.device, name: e.target.value }
+        }))}
+      />
+      <Input
+        label="MAC Address"
+        type="text"
+        placeholder="MAC Address"
+        value={formData.device.macAddress}
+        onChange={(e) => setFormData((prev) => ({
+          ...prev,
+          device: { ...prev.device, macAddress: e.target.value }
+        }))}
       />
 
       <button type="submit" disabled={loading}>

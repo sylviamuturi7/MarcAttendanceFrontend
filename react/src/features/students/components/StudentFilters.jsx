@@ -1,5 +1,5 @@
-import Input from "../../../components/common/Input";
-import Select from "../../../components/common/Select";
+import Input from "@/components/common/Input";
+import Select from "@/components/common/Select";
 
 // departments is now a prop so it can come from the API instead of being hardcoded
 const StudentFilters = ({ filters, setFilters, departments = [] }) => {

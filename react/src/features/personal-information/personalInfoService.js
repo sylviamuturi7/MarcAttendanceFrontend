@@ -1,8 +1,8 @@
-import api from "../../../services/api";
+import api from "../../services/api";
 
 async function getAdminProfile() {
   try {
-    const response = await api.get("/profile");
+    const response = await api.get("/auth/me");
     return response.data;
   } catch (error) {
     throw error.response?.data ?? error;
@@ -11,7 +11,7 @@ async function getAdminProfile() {
 
 async function updateAdminProfile(profileData) {
   try {
-    const response = await api.put("/profile", profileData);
+    const response = await api.patch("/auth/me", profileData);
     return response.data;
   } catch (error) {
     throw error.response?.data ?? error;
@@ -20,7 +20,7 @@ async function updateAdminProfile(profileData) {
 
 async function updatePassword(passwordData) {
   try {
-    const response = await api.put("/profile/password", passwordData);
+    const response = await api.patch("/profile/password", passwordData);
     return response.data;
   } catch (error) {
     throw error.response?.data ?? error;

@@ -1,13 +1,13 @@
 import { useState } from "react";
 
 function PersonalInfoForm({ admin, onSubmit }) {
-  if (!admin) return <p>No profile information found.</p>;
-
   const [formData, setFormData] = useState({
-    firstName: admin.firstName,
-    lastName: admin.lastName,
-    email: admin.email,
+    firstName: admin?.firstName || "",
+    lastName: admin?.lastName || "",
+    email: admin?.email || "",
   });
+
+  if (!admin) return <p>No profile information found.</p>;
 
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });

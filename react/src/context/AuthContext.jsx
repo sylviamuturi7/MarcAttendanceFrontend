@@ -7,19 +7,24 @@ function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    try {
-      const storedUser = localStorage.getItem("user");
-      if (storedUser) {
-        setUser(JSON.parse(storedUser));
+    // Initialize user from localStorage on app startup
+    const initializeUser = () => {
+      try {
+        const storedUser = localStorage.getItem("user");
+        if (storedUser) {
+          setUser(JSON.parse(storedUser));
+        }
+      } catch {
+        // Clear invalid user data
+        localStorage.removeItem("user");
+        localStorage.removeItem("token");
+      } finally {
+        setLoading(false);
       }
-    } catch (err) {
-      console.error("Failed to parse stored user:", err);
-      localStorage.removeItem("user");
-      localStorage.removeItem("token");
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+    };
+
+    initializeUser();
+  }, []); // Empty deps array because this should only run once on mount
 
   const login = (userData, token) => {
     localStorage.setItem("user", JSON.stringify(userData));
