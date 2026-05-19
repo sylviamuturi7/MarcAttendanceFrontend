@@ -1,4 +1,4 @@
-//making API calls to fetch attendance data for the dashboard and logs pages
+// API calls for attendance data used across dashboard and logs pages
 import api from "../../../services/api";
 
 async function getLiveConnections() {
@@ -13,6 +13,15 @@ async function getLiveConnections() {
 async function getAttendanceLogs() {
   try {
     const response = await api.get("/attendance/logs");
+    return response.data;
+  } catch (error) {
+    throw error.response?.data ?? error;
+  }
+}
+
+async function getAttendanceStats() {
+  try {
+    const response = await api.get("/attendance/stats");
     return response.data;
   } catch (error) {
     throw error.response?.data ?? error;
@@ -37,5 +46,10 @@ async function getAttendanceByDepartment(department) {
   }
 }
 
-export { getLiveConnections, getAttendanceLogs, getAttendanceByDate, getAttendanceByDepartment };
-
+export {
+  getLiveConnections,
+  getAttendanceLogs,
+  getAttendanceStats,
+  getAttendanceByDate,
+  getAttendanceByDepartment,
+};

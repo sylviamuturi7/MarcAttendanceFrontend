@@ -1,4 +1,4 @@
-function Select({ label, options, value, onChange }) {
+function Select({ label, options = [], value, onChange }) {
   let id = "select";
   if (label) {
     id = label.toLowerCase().split(" ").join("-");

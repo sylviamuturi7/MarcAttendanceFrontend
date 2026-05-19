@@ -6,11 +6,16 @@ import { BrowserRouter } from "react-router-dom";
 
 import App from "./App";
 
+// Styles
 import "./styles/index.css";
 import "./styles/variables.css";
 import "./styles/dashboard.css";
 import "./styles/tables.css";
 
+// Import axios interceptors so they are registered before any API call is made
+import "./services/axios";
+
+// Context providers
 import AuthProvider from "./context/AuthContext";
 import ThemeProvider from "./context/ThemeContext";
 import NotificationProvider from "./context/NotificationContext";

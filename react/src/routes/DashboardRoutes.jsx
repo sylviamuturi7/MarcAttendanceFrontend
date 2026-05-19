@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 
 import ProtectedRoute from "./ProtectedRoute";
-import DashboardLayout from "@/components/layout/DashboardLayout";
+import DashboardLayout from "@/components/Layout/DashboardLayout";
 
 import StudentsList from "@/features/students/pages/StudentsList";
 import StudentProfile from "@/features/students/pages/StudentProfile";
@@ -13,7 +13,8 @@ import AttendanceLogs from "@/features/attendance/pages/AttendanceLogs";
 import Teachers from "@/features/teachers/pages/Teachers";
 import Departments from "@/features/departments/pages/Departments";
 import Devices from "@/features/devices/pages/Devices";
-import MARSReports from "@/features/reports/pages/MARSReports";
+// NOTE: file is MARSReport.jsx (no trailing 's')
+import MARSReport from "@/features/reports/pages/MARSReport";
 
 function DashboardRoutes() {
   return (
@@ -39,7 +40,7 @@ function DashboardRoutes() {
           <Route path="/devices" element={<Devices />} />
 
           {/* Reports */}
-          <Route path="/reports" element={<MARSReports />} />
+          <Route path="/reports" element={<MARSReport />} />
         </Routes>
       </DashboardLayout>
     </ProtectedRoute>

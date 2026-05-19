@@ -6,11 +6,27 @@ function AttendanceChart({ data, title = "Attendance Trends", height = 250 }) {
   const [width, setWidth] = useState(0);
 
   useEffect(() => {
-    if (containerRef.current) setWidth(containerRef.current.offsetWidth);
+    if (!containerRef.current) return;
+
+    // Set the initial width
+    setWidth(containerRef.current.offsetWidth);
+
+    // ResizeObserver updates the chart width whenever the container resizes
+    const observer = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        setWidth(entry.contentRect.width);
+      }
+    });
+
+    observer.observe(containerRef.current);
+
+    // Clean up the observer when the component unmounts
+    return () => observer.disconnect();
   }, []);
 
-  if (!data || data.length === 0) 
+  if (!data || data.length === 0) {
     return <p>No data</p>;
+  }
 
   return (
     <div className="attendance-chart" ref={containerRef}>

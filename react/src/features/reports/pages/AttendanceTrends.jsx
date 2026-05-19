@@ -1,24 +1,36 @@
-import DashboardLayout from "../../../components/Layout/DashboardLayout";
+import { useEffect, useState } from "react";
 import PageHeader from "../../../components/Layout/PageHeader";
 import AttendanceChart from "../../attendance/components/AttendanceChart";
+import { getAttendanceLogs } from "../../attendance/attendanceService";
 
+// DashboardLayout is NOT here — DashboardRoutes already wraps all pages in it
 function AttendanceTrends() {
-  const chartData = null;
+  const [chartData, setChartData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  if (chartData === null) {
-    return (
-      <DashboardLayout>
-        <PageHeader title="Attendance Trends" />
-        <p>Loading...</p>
-      </DashboardLayout>
-    );
-  }
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const data = await getAttendanceLogs();
+        setChartData(data);
+      } catch (err) {
+        setError("Failed to load attendance trends.");
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchData();
+  }, []);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
 
   return (
-    <DashboardLayout>
+    <>
       <PageHeader title="Attendance Trends" />
       <AttendanceChart data={chartData} />
-    </DashboardLayout>
+    </>
   );
 }
 

@@ -1,7 +1,14 @@
 import Input from "../../../components/common/Input";
 import Select from "../../../components/common/Select";
 
-const StudentFilters = ({ filters, setFilters }) => {
+// departments is now a prop so it can come from the API instead of being hardcoded
+const StudentFilters = ({ filters, setFilters, departments = [] }) => {
+  // Build the options list for the department select
+  const departmentOptions = [
+    { label: "All", value: "" },
+    ...departments.map((dept) => ({ label: dept, value: dept })),
+  ];
+
   return (
     <div>
       <Input
@@ -13,15 +20,12 @@ const StudentFilters = ({ filters, setFilters }) => {
       />
 
       <Select
+        label="Department"
         value={filters.department}
         onChange={(e) =>
           setFilters({ ...filters, department: e.target.value })
         }
-        options={[
-          { label: "All", value: "" },
-          { label: "IT", value: "IT" },
-          { label: "Engineering", value: "Engineering" },
-        ]}
+        options={departmentOptions}
       />
     </div>
   );

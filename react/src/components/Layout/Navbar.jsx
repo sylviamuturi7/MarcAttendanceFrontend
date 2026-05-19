@@ -1,52 +1,54 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Bell, LogOut } from "lucide-react";
 
-const navLinks = [
-  { to: "/dashboard", label: "Home" },
-  { to: "/students", label: "Students" },
-  { to: "/departments", label: "Departments" },
-  { to: "/reports", label: "Reports" },
-];
+import useAuth from "@/hooks/useAuth";
+import { NotificationContext } from "@/context/NotificationContext";
+import { navigation } from "@/config/navigation";
 
 function Navbar() {
-  const user = null;
-  const notificationCount = 0;
+
+  const { user, logout } = useAuth();
+
+
+  const { notifications } = useContext(NotificationContext);
+  const notificationCount = notifications.length;
+
+  const navLinks = navigation.filter((item) =>
+    item.roles.includes(user?.role)
+  );
 
   function handleLogout() {
-    console.log("Logout clicked");
-  }
-
-  function handleNotifications() {
-    console.log("Notifications clicked");
+    logout();
   }
 
   return (
     <nav className="navbar" aria-label="Main navigation">
       <div className="navbar-logo">
         <img src="/logo.png" alt="" />
-        <span>MARS</span>
+        <span>MARC</span>
       </div>
 
       <ul className="navbar-links">
         {navLinks.map((link) => (
-          <li key={link.to}>
-            <Link to={link.to}>{link.label}</Link>
+          <li key={link.path}>
+            <Link to={link.path}>{link.label}</Link>
           </li>
         ))}
       </ul>
 
       <div className="navbar-actions">
-        <button onClick={handleNotifications} aria-label="Notifications">
+        <button aria-label="Notifications">
           <Bell size={20} aria-hidden="true" />
-          {notificationCount > 0 ? (
+          {notificationCount > 0 && (
             <span className="navbar-notification-badge">{notificationCount}</span>
-          ) : null}
+          )}
         </button>
 
         <Link to="/profile">
           <img
             src={user?.avatar || "/images/admin-avatar.png"}
-            alt={user ? `${user.name} profile photo` : "Admin profile photo"}
+            alt={user ? `${user.name} profile photo` : "Profile photo"}
           />
         </Link>
 

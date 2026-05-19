@@ -1,16 +1,18 @@
-import DashboardLayout from "../../../components/Layout/DashboardLayout";
-import ReportTable from "../components/ReportTable";
-import ExportButtons from "../components/ExportButtons";
 import PageHeader from "../../../components/Layout/PageHeader";
+import ReportTable from "../components/ReportTable";
+// NOTE: the file is ExportButtons.jsx but the default export is ExportButton (singular)
+// Using ExportButton as the import name to match the actual component
+import ExportButton from "../components/ExportButtons";
 
-function MARSReports() {
+// DashboardLayout is NOT here — DashboardRoutes already wraps all pages in it
+function MARSReport() {
   return (
-    <DashboardLayout>
-      <PageHeader title="MARS Reports" />
-      <ExportButtons />
+    <>
+      <PageHeader title="MARC Reports" />
+      <ExportButton />
       <ReportTable />
-    </DashboardLayout>
+    </>
   );
 }
 
-export default MARSReports;
+export default MARSReport;

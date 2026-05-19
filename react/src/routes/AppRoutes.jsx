@@ -1,24 +1,18 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import AuthRoutes from "./AuthRoutes";
 import DashboardRoutes from "./DashboardRoutes";
-import NotFound from "@/pages/NotFound";
+
 
 function AppRoutes() {
   return (
-    <BrowserRouter>
-      <Routes>
-        {/* Auth routes (login, register, etc.) */}
-        <Route path="/*" element={<AuthRoutes />} />
+    <Routes>
+      <Route path="/dashboard/*" element={<DashboardRoutes />} />
 
-        {/* Dashboard routes (protected area) */}
-        <Route path="/dashboard/*" element={<DashboardRoutes />} />
-
-        {/* 404 Page */}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
+      <Route path="/*" element={<AuthRoutes />} />
+    </Routes>
   );
 }
 
 export default AppRoutes;
+//Deleted browserRouter wrapper since it's already provided in main.jsx. 

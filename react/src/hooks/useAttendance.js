@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { getAttendance } from "@/features/attendance/attendanceService";
+// getLiveConnections that fetches current attendance data
+import { getLiveConnections } from "@/features/attendance/attendanceService";
 
 const useAttendance = () => {
   const [attendance, setAttendance] = useState([]);
@@ -9,7 +10,7 @@ const useAttendance = () => {
   const fetchAttendance = async () => {
     setLoading(true);
     try {
-      const data = await getAttendance();
+      const data = await getLiveConnections();
       setAttendance(data);
     } catch (err) {
       setError(err);

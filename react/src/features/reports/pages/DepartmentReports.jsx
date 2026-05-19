@@ -1,13 +1,13 @@
-import DashboardLayout from "../../../components/Layout/DashboardLayout";
 import PageHeader from "../../../components/Layout/PageHeader";
 import ReportTable from "../components/ReportTable";
 
+// DashboardLayout is NOT here — DashboardRoutes already wraps all pages in it
 function DepartmentReports() {
   return (
-    <DashboardLayout>
+    <>
       <PageHeader title="Department Reports" />
       <ReportTable />
-    </DashboardLayout>
+    </>
   );
 }
 

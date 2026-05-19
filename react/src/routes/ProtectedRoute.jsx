@@ -1,9 +1,15 @@
 import { Navigate } from "react-router-dom";
+import useAuth from "@/hooks/useAuth";
 
+// ProtectedRoute uses AuthContext instead of reading localStorage directly.
 function ProtectedRoute({ children }) {
-  const token = localStorage.getItem("token");
+  const { user, loading } = useAuth();
 
-  if (!token) {
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (!user) {
     return <Navigate to="/" replace />;
   }
 
